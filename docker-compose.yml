@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: pedidos
+      MONGO_INITDB_ROOT_PASSWORD: yU1T55xcVR
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./schema.js:/docker-entrypoint-initdb.d/schema.js
+
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: tech
+      RABBITMQ_DEFAULT_PASS: challenge
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+#  app:
+#    depends_on:
+#      - mongo
+#    build: .
+#    environment:
+#      - spring.data.mongodb.uri=mongodb://pedidos:yU1T55xcVR@mongo:27017/pedidos?authSource=admin
+#      - SPRING_PROFILES_ACTIVE=test
+#    ports:
+#      - "8080:8080"
+
+networks:
+  my-networks:
+    driver: bridge
