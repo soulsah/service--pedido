@@ -14,12 +14,12 @@ public class PedidoMapperTest {
 
     @Test
     public void testMapToRecord() {
-        Pedido pedido = new Pedido(1L, 123L,
+        Pedido pedido = new Pedido("1L", 123L,
                 List.of(new ProdutoItem(101L, 2)), 100.50, "Em processamento");
 
         PedidoRecord pedidoRecord = PedidoMapper.mapToRecord(pedido);
 
-        assertEquals(1L, pedidoRecord.pedidoId());
+        assertEquals("1L", pedidoRecord.pedidoId());
         assertEquals(123L, pedidoRecord.clienteId());
         assertEquals(1, pedidoRecord.produtosIds().size());
         assertEquals(101L, pedidoRecord.produtosIds().get(0).id());
@@ -50,12 +50,12 @@ public class PedidoMapperTest {
 
     @Test
     public void testMapFromRecord() {
-        PedidoRecord pedidoRecord = new PedidoRecord(1L, 123L,
+        PedidoRecord pedidoRecord = new PedidoRecord("1L", 123L,
                 List.of(new ProdutoItemRecord(101L, 2)), 100.50, "Em processamento");
 
         Pedido pedido = PedidoMapper.mapFromRecord(pedidoRecord);
 
-        assertEquals(1L, pedido.getPedidoId());
+        assertEquals("1L", pedido.getPedidoId());
         assertEquals(123L, pedido.getClienteId());
         assertEquals(1, pedido.getProdutos().size());
         assertEquals(101L, pedido.getProdutos().get(0).getIdProduto());

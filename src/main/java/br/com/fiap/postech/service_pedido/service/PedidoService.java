@@ -11,9 +11,9 @@ public interface PedidoService {
 
     List<PedidoRecord> findAllPedidos() throws PedidoNotFoundException;
 
-    void deletePedido(Long id);
+    void deletePedido(String id);
 
-    PedidoRecord findPedidoById(Long id) throws PedidoNotFoundException;
+    PedidoRecord findPedidoById(String id) throws PedidoNotFoundException;
 
     PedidoRecord save(PedidoRecord pedido);
 }

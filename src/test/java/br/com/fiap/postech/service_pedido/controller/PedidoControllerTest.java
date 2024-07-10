@@ -48,7 +48,7 @@ public class PedidoControllerTest {
 
     @Test
     public void testGetPedidosByIdNotFound() throws PedidoNotFoundException {
-        Long id = 1L;
+        String id = "1L";
 
         when(pedidoService.findPedidoById(id)).thenThrow(new PedidoNotFoundException());
 
@@ -57,7 +57,7 @@ public class PedidoControllerTest {
 
     @Test
     public void testGetPedidosByIdSuccess() throws PedidoNotFoundException {
-        Long id = 1L;
+        String id = "1L";
         PedidoRecord pedido = new PedidoRecord(id,1L, List.of(new ProdutoItemRecord(1l,1)),0,null);
 
         when(pedidoService.findPedidoById(id)).thenReturn(pedido);
@@ -71,7 +71,7 @@ public class PedidoControllerTest {
 
     @Test
     public void testDeletePedidoSuccess() {
-        Long id = 1L;
+        String id = "1L";
 
         doNothing().when(pedidoService).deletePedido(id);
 
@@ -82,7 +82,7 @@ public class PedidoControllerTest {
 
     @Test
     public void testCreatePedidoSuccess() {
-        PedidoRecord pedido = new PedidoRecord(1l,1L, List.of(new ProdutoItemRecord(1l,1)),0,null);
+        PedidoRecord pedido = new PedidoRecord("1l",1L, List.of(new ProdutoItemRecord(1l,1)),0,null);
         ;
 
         when(pedidoService.save(pedido)).thenReturn(pedido);

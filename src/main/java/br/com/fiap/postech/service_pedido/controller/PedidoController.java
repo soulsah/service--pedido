@@ -19,7 +19,7 @@ public class PedidoController {
     private PedidoService pedidoService;
 
     @DeleteMapping("/{id}")
-    public void deletePedido(@PathVariable Long id){
+    public void deletePedido(@PathVariable String id){
         pedidoService.deletePedido(id);
     }
 
@@ -29,7 +29,7 @@ public class PedidoController {
         return ResponseEntity.ok(pedidoService.findAllPedidos());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<PedidoRecord> getPedidosById(@PathVariable Long id) throws PedidoNotFoundException {
+    public ResponseEntity<PedidoRecord> getPedidosById(@PathVariable String id) throws PedidoNotFoundException {
 
         return ResponseEntity.ok(pedidoService.findPedidoById(id));
     }
