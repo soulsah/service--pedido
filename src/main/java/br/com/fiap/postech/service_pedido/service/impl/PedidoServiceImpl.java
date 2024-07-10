@@ -6,6 +6,7 @@ import br.com.fiap.postech.service_pedido.mapper.PedidoMapper;
 import br.com.fiap.postech.service_pedido.records.PedidoRecord;
 import br.com.fiap.postech.service_pedido.repository.PedidoRepository;
 import br.com.fiap.postech.service_pedido.service.PedidoService;
+import br.com.fiap.postech.service_pedido.service.SnsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,9 @@ public class PedidoServiceImpl implements PedidoService {
     @Autowired
     private PedidoRepository pedidoRepository;
 
+    @Autowired
+    private SnsService snsService;
+
 
     @Override
     public List<PedidoRecord> findAllPedidos() throws PedidoNotFoundException {
@@ -29,12 +33,12 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
-    public void deletePedido(Long id) {
+    public void deletePedido(String id) {
         pedidoRepository.deleteById(id);
     }
 
     @Override
-    public PedidoRecord findPedidoById(Long id) throws PedidoNotFoundException {
+    public PedidoRecord findPedidoById(String id) throws PedidoNotFoundException {
         Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
         return pedidoOptional.map(PedidoMapper::mapToRecord).orElseThrow(PedidoNotFoundException::new);
     }
