@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class EnriquecerPedidoServiceImpl implements EnriquecerPedidoService {
 
-    @Value("${url.produtos")
+    @Value("${url.produtos}")
     private String urlProduto;
 
     @Value("${url.clientes}")
