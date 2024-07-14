@@ -32,8 +32,6 @@
 		</sonar.coverage.jacoco.xmlReportPaths>
 		<java.version>21</java.version>
 		<jacoco.version>0.8.12</jacoco.version>
-		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.projectKey>soulsah_service--pedido</sonar.projectKey>
 		<sonar.exclusions>**/config/*</sonar.exclusions>
 	</properties>
 	<dependencies>
