@@ -31,10 +31,8 @@
 		<jacoco.version>0.8.5</jacoco.version>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.projectKey>soulsah_service--pedido</sonar.projectKey>
-		<sonar.sources>src/main/java</sonar.sources>
-		<sonar.tests>src/test/java</sonar.tests>
 		<sonar.exclusions>**/config/*</sonar.exclusions>
-		<sonar.jacoco.reportPath>target/site/jacoco/report.xml</sonar.jacoco.reportPath>
+		<sonar.jacoco.reportPath>target/site/jacoco/jacoco.xml</sonar.jacoco.reportPath>
 	</properties>
 	<dependencies>
 		<dependency>
