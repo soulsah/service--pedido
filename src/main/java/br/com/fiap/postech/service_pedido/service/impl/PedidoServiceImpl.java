@@ -5,6 +5,7 @@ import br.com.fiap.postech.service_pedido.exception.PedidoNotFoundException;
 import br.com.fiap.postech.service_pedido.mapper.PedidoMapper;
 import br.com.fiap.postech.service_pedido.records.PedidoRecord;
 import br.com.fiap.postech.service_pedido.repository.PedidoRepository;
+import br.com.fiap.postech.service_pedido.service.EnriquecerPedidoService;
 import br.com.fiap.postech.service_pedido.service.PedidoService;
 import br.com.fiap.postech.service_pedido.service.SnsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,10 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Autowired
     private PedidoRepository pedidoRepository;
+
+
+    @Autowired
+    private EnriquecerPedidoService enriquecerPedidoService;
 
     @Autowired
     private SnsService snsService;
@@ -46,7 +51,10 @@ public class PedidoServiceImpl implements PedidoService {
     @Override
     public PedidoRecord save(PedidoRecord pedidoRecord) {
         Pedido pedido = PedidoMapper.mapFromRecord(pedidoRecord);
+        pedido.setTotal(enriquecerPedidoService.calcularValorProdutos(pedido));
+        pedido.setStatus("PENDENTE_EFETIVACAO");
         Pedido savedPedido = pedidoRepository.save(pedido);
+        snsService.sendSnsMessage(enriquecerPedidoService.EnriquecerPedido(savedPedido));
         return PedidoMapper.mapToRecord(savedPedido);
     }
 }

@@ -15,6 +15,7 @@ public class SnsConfig {
         String accessKeyId = System.getenv("AWS_ACCESS_KEY_ID");
         String secretAccessKey = System.getenv("AWS_SECRET_ACCESS_KEY");
 
+
         AwsBasicCredentials awsCredentials = AwsBasicCredentials.create(accessKeyId, secretAccessKey);
         return SnsClient.builder()
                 .region(Region.SA_EAST_1)
