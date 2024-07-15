@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,9 +26,11 @@ public class EnriquecerPedidoServiceImpl implements EnriquecerPedidoService {
     @Override
     public PedidoCompletoRecord enriquecerPedido(Pedido pedido) {
         List<ProdutoRecord> produtoRecord = pedido.getProdutos().stream().map(produto -> this.procurarProduto(produto.getIdProduto())).toList();
+
+       List<ProdutoRecord>  produtos = arrumaQuantidadeProduto(pedido,produtoRecord);
         ClienteRecord clienteRecord = procurarCliente(pedido.getClienteId());
 
-        return new PedidoCompletoRecord(pedido.getPedidoId(), clienteRecord, produtoRecord, pedido.getTotal(), pedido.getStatus());
+        return new PedidoCompletoRecord(pedido.getPedidoId(), clienteRecord, produtos, pedido.getTotal(), pedido.getStatus());
     }
 
     public ProdutoRecord procurarProduto(long produtoId) {
@@ -52,6 +55,18 @@ public class EnriquecerPedidoServiceImpl implements EnriquecerPedidoService {
         }
 
         return valorTotal;
+    }
+
+    public List<ProdutoRecord> arrumaQuantidadeProduto(Pedido pedido,List<ProdutoRecord> produtoRecord) {
+        List<ProdutoRecord> listaRetorno = new ArrayList<>();
+
+        for (ProdutoRecord produto : produtoRecord) {
+            for (ProdutoItem produtoItemRecord : pedido.getProdutos()) {
+                if (produto.id().longValue() == produtoItemRecord.getIdProduto().longValue())
+               listaRetorno.add(new ProdutoRecord(produto.id(),produto.nome(),produto.descricao(),produto.preco(),produtoItemRecord.getQuantidade(),produto.status()));
+            }
+        }
+        return  listaRetorno;
     }
 
 }
