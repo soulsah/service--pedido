@@ -34,7 +34,6 @@
 		<sonar.exclusions>**/config/*,**/service/EnriquecerPedidoService.java,**/service/impl/EnriquecerPedidoService.java</sonar.exclusions>
         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../target/jacoco.exec</sonar.coverage.jacoco.xmlReportPaths>
         <sonar.language>java</sonar.language>
 	</properties>
 	<dependencies>
