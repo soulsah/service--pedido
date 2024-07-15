@@ -23,7 +23,7 @@ public class EnriquecerPedidoServiceImpl implements EnriquecerPedidoService {
 
 
     @Override
-    public PedidoCompletoRecord EnriquecerPedido(Pedido pedido) {
+    public PedidoCompletoRecord enriquecerPedido(Pedido pedido) {
         List<ProdutoRecord> produtoRecord = pedido.getProdutos().stream().map(produto -> this.procurarProduto(produto.getIdProduto())).toList();
         ClienteRecord clienteRecord = procurarCliente(pedido.getClienteId());
 

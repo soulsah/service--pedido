@@ -7,7 +7,7 @@ import br.com.fiap.postech.service_pedido.records.ProdutoRecord;
 
 public interface EnriquecerPedidoService {
 
-     PedidoCompletoRecord EnriquecerPedido (Pedido pedido );
+     PedidoCompletoRecord enriquecerPedido (Pedido pedido );
 
     Double calcularValorProdutos(Pedido pedido);
 
