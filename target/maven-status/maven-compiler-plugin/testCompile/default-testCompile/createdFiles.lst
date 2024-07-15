@@ -1,0 +1,4 @@
+br/com/fiap/postech/service_pedido/controller/PedidoControllerTest.class
+br/com/fiap/postech/service_pedido/service/PedidoServiceImplTest.class
+br/com/fiap/postech/service_pedido/exception/CustomExceptionHandlerTest.class
+br/com/fiap/postech/service_pedido/mapper/PedidoMapperTest.class

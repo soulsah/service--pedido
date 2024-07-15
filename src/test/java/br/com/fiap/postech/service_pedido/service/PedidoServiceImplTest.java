@@ -3,17 +3,14 @@ package br.com.fiap.postech.service_pedido.service;
 import br.com.fiap.postech.service_pedido.entity.Pedido;
 import br.com.fiap.postech.service_pedido.entity.ProdutoItem;
 import br.com.fiap.postech.service_pedido.exception.PedidoNotFoundException;
-import br.com.fiap.postech.service_pedido.mapper.PedidoMapper;
 import br.com.fiap.postech.service_pedido.records.PedidoRecord;
 import br.com.fiap.postech.service_pedido.records.ProdutoItemRecord;
 import br.com.fiap.postech.service_pedido.repository.PedidoRepository;
-import br.com.fiap.postech.service_pedido.service.SnsService;
 import br.com.fiap.postech.service_pedido.service.impl.PedidoServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,8 +22,6 @@ public class PedidoServiceImplTest {
     @Mock
     private PedidoRepository pedidoRepository;
 
-    @Mock
-    private SnsService snsService;
 
     @InjectMocks
     private PedidoServiceImpl pedidoService;

@@ -1,0 +1,17 @@
+br/com/fiap/postech/service_pedido/records/ProdutoRecord.class
+br/com/fiap/postech/service_pedido/controller/PedidoController.class
+br/com/fiap/postech/service_pedido/mapper/PedidoMapper.class
+br/com/fiap/postech/service_pedido/repository/PedidoRepository.class
+br/com/fiap/postech/service_pedido/records/ProdutoItemRecord.class
+br/com/fiap/postech/service_pedido/entity/Pedido.class
+br/com/fiap/postech/service_pedido/records/PedidoRecord.class
+br/com/fiap/postech/service_pedido/service/impl/EnriquecerPedidoServiceImpl.class
+br/com/fiap/postech/service_pedido/exception/PedidoNotFoundException.class
+br/com/fiap/postech/service_pedido/entity/ProdutoItem.class
+br/com/fiap/postech/service_pedido/service/impl/PedidoServiceImpl.class
+br/com/fiap/postech/service_pedido/exception/CustomExceptionHandler.class
+br/com/fiap/postech/service_pedido/ServicePedidoApplication.class
+br/com/fiap/postech/service_pedido/service/PedidoService.class
+br/com/fiap/postech/service_pedido/records/PedidoCompletoRecord.class
+br/com/fiap/postech/service_pedido/service/EnriquecerPedidoService.class
+br/com/fiap/postech/service_pedido/records/ClienteRecord.class
