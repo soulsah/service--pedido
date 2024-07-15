@@ -85,7 +85,11 @@
 			<version>2.20.47</version>
 		</dependency>
 
-
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>${jacoco.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -121,27 +125,35 @@
 					</excludes>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.12</version>
+				<version>${jacoco.version}</version>
 				<executions>
 					<execution>
-						<id>prepare-agent</id>
+						<id>jacoco-initialize</id>
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
 					</execution>
 					<execution>
-						<id>report</id>
+						<id>jacoco-site</id>
+						<phase>package</phase>
 						<goals>
 							<goal>report</goal>
 						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
 						<configuration>
-							<formats>
-								<format>XML</format>
-							</formats>
+							<rules>
+								<rule>
+									<element>PACKAGE</element>
+								</rule>
+							</rules>
 						</configuration>
 					</execution>
 				</executions>
