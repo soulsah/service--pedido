@@ -3,10 +3,10 @@ Tecnologias e ferramentas utilizadas
 
 * Linguagem de programação: 
 
-    * Java 17
+    * Java 21
 
 * Framework:
-    * Spring Boot 3.1.5
+    * Spring Boot 3.3.0
 
 * Bibliotecas:
   * Spring Web
