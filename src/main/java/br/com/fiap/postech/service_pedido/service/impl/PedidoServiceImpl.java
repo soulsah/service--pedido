@@ -12,6 +12,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -69,7 +72,14 @@ public class PedidoServiceImpl implements PedidoService {
     private void chamarApiPagamentos(PedidoCompletoRecord pedidoRecord){
          RestTemplate restTemplate  = new RestTemplate();
 
-         restTemplate.postForEntity(urlPagamentos+"/pagamentos", convertPedidoToJson(pedidoRecord), String.class);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        String jsonPedido = convertPedidoToJson(pedidoRecord);
+
+        HttpEntity<String> request = new HttpEntity<>(jsonPedido, headers);
+
+         restTemplate.postForEntity(urlPagamentos, request, String.class);
     }
 
     public String convertPedidoToJson(PedidoCompletoRecord pedido) {
