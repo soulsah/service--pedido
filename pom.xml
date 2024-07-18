@@ -32,11 +32,9 @@
 		<java.version>17</java.version>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
-		<jacoco.version>0.8.12</jacoco.version>
 		<sonar.exclusions>**/config/*,**/service/EnriquecerPedidoService.java,**/service/impl/EnriquecerPedidoService.java</sonar.exclusions>
-        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-        <sonar.language>java</sonar.language>
+		<sonar.organization>techchallenge</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -90,11 +88,6 @@
 			<version>2.20.47</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.jacoco</groupId>
-			<artifactId>jacoco-maven-plugin</artifactId>
-			<version>${jacoco.version}</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.mockito</groupId>
