@@ -39,7 +39,7 @@ jobs:
 
       - name: Build, tag, and push image to Amazon ECR
         env:
-          ECR_REGISTRY: public.ecr.aws/m8l0e5q9
+          ECR_REGISTRY: 155175446956.dkr.ecr.us-east-1.amazonaws.com
           ECR_REPOSITORY: service-pedido
           IMAGE_TAG: latest
         run: |
