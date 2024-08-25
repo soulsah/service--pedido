@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Pedido.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">service-pedido</a> &gt; <a href="index.source.html" class="el_package">br.com.fiap.postech.service_pedido.entity</a> &gt; <span class="el_source">Pedido.java</span></div><h1>Pedido.java</h1><pre class="source lang-java linenums">package br.com.fiap.postech.service_pedido.entity;
+
+import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.bson.codecs.pojo.annotations.BsonProperty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
+
+@Getter
+<span class="nc" id="L15">@Setter</span>
+<span class="fc" id="L16">@AllArgsConstructor</span>
+<span class="nc" id="L17">@NoArgsConstructor</span>
+@Document(collection = &quot;pedidos&quot;)
+    public class Pedido {
+
+        @Id
+<span class="fc" id="L22">        private String pedidoId;</span>
+
+        @NotEmpty(message = &quot;clientId não pode estar vazio&quot;)
+<span class="fc" id="L25">        private Long clienteId;</span>
+
+        @NotEmpty(message = &quot;produtos não pode estar vazio&quot;)
+        @BsonProperty(value = &quot;produtos&quot;)
+<span class="fc" id="L29">        private List&lt;ProdutoItem&gt; produtos;</span>
+
+<span class="fc" id="L31">        private Double total;</span>
+
+<span class="fc" id="L33">        private String status;</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
