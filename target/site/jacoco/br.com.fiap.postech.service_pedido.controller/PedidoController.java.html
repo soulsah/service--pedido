@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PedidoController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">service-pedido</a> &gt; <a href="index.source.html" class="el_package">br.com.fiap.postech.service_pedido.controller</a> &gt; <span class="el_source">PedidoController.java</span></div><h1>PedidoController.java</h1><pre class="source lang-java linenums">package br.com.fiap.postech.service_pedido.controller;
+
+import br.com.fiap.postech.service_pedido.exception.PedidoNotFoundException;
+import br.com.fiap.postech.service_pedido.records.PedidoRecord;
+import br.com.fiap.postech.service_pedido.service.PedidoService;
+import org.apache.coyote.Response;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+
+@RestController
+@RequestMapping(&quot;/pedido&quot;)
+<span class="fc" id="L16">public class PedidoController {</span>
+
+    @Autowired
+    private PedidoService pedidoService;
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public void deletePedido(@PathVariable String id){
+<span class="fc" id="L23">        pedidoService.deletePedido(id);</span>
+<span class="fc" id="L24">    }</span>
+
+    @GetMapping(&quot;&quot;)
+    public ResponseEntity&lt;List&lt;PedidoRecord&gt;&gt; getAllPedidos() throws PedidoNotFoundException {
+
+<span class="fc" id="L29">        return ResponseEntity.ok(pedidoService.findAllPedidos());</span>
+    }
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;PedidoRecord&gt; getPedidosById(@PathVariable String id) throws PedidoNotFoundException {
+
+<span class="fc" id="L34">        return ResponseEntity.ok(pedidoService.findPedidoById(id));</span>
+    }
+
+    @PostMapping(&quot;&quot;)
+    public ResponseEntity&lt;PedidoRecord&gt; createPedido(@RequestBody PedidoRecord pedido){
+
+<span class="fc" id="L40">        return ResponseEntity.ok(pedidoService.save(pedido));</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
