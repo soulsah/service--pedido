@@ -13,7 +13,18 @@ services:
       - ./schema.js:/docker-entrypoint-initdb.d/schema.js
 
 
-
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: always
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_DEFAULT_VHOST: /
+    ports:
+      - "5673:5672"  # Porta do serviço RabbitMQ
+      - "15672:15672"  # Porta para o painel de administração
+    volumes:
+      - ./rabbitmq-config.sh:/docker-entrypoint-initdb.d/rabbitmq-config.sh
 #  app:
 #    depends_on:
 #      - mongo

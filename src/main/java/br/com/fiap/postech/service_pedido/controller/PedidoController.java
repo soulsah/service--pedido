@@ -1,7 +1,11 @@
 package br.com.fiap.postech.service_pedido.controller;
 
 import br.com.fiap.postech.service_pedido.exception.PedidoNotFoundException;
+import br.com.fiap.postech.service_pedido.producer.impl.PedidoProducerImpl;
+import br.com.fiap.postech.service_pedido.records.ClienteRecord;
+import br.com.fiap.postech.service_pedido.records.PedidoCompletoRecord;
 import br.com.fiap.postech.service_pedido.records.PedidoRecord;
+import br.com.fiap.postech.service_pedido.records.ProdutoRecord;
 import br.com.fiap.postech.service_pedido.service.PedidoService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +40,6 @@ public class PedidoController {
 
     @PostMapping("")
     public ResponseEntity<PedidoRecord> createPedido(@RequestBody PedidoRecord pedido){
-
         return ResponseEntity.ok(pedidoService.save(pedido));
     }
 
